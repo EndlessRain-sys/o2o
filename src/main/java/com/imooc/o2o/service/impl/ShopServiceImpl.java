@@ -1,8 +1,10 @@
 package com.imooc.o2o.service.impl;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
+import com.imooc.o2o.util.PageCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,19 +25,17 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private ShopDao shopDao;
 
-	/*@Override
+
+	@Override
 	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
-		//将页码转换成行码
 		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
-		//依据查询条件，调用dao层返回相关的店铺列表
 		List<Shop> shopList = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
-		//依据相同的查询条件，返回店铺总数
 		int count = shopDao.queryShopCount(shopCondition);
 		ShopExecution se = new ShopExecution();
-		if (shopList != null) {
+		if(shopList != null){
 			se.setShopList(shopList);
 			se.setCount(count);
-		} else {
+		}else{
 			se.setState(ShopStateEnum.INNER_ERROR.getState());
 		}
 		return se;
@@ -47,11 +47,11 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	@Transactional
-	public ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException {
-		if (shop == null || shop.getShopId() == null) {
+	public ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException{
+		if (shop == null || shop.getShopId() == null){
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
-		} else {
+		}
+		else {
 			// 1.判断是否需要处理图片
 			try {
 				if (thumbnail.getImage() != null && thumbnail.getImageName() != null
@@ -75,7 +75,7 @@ public class ShopServiceImpl implements ShopService {
 				throw new ShopOperationException("modifyShop error:" + e.getMessage());
 			}
 		}
-	}*/
+	}
 
 	@Override
 	@Transactional

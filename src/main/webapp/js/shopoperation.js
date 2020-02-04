@@ -64,7 +64,7 @@ $(function() {
 				});
 				data.areaList.map(function(item, index) {
 					tempAreaHtml += '<option data-id="' + item.areaId + '">'
-							+ item.areaName + '</option>';
+                    + item.areaName + '</option>';
 				});
                 // 获取html中对应标签的id 赋值
                 $('#shop-category').html(tempHtml);
@@ -123,10 +123,10 @@ $(function() {
 			success : function(data) {
 				if (data.success) {
 					$.toast('提交成功！');
-					// if (!isEdit) {
-                    // 					// 	// 若为注册操作，成功后返回店铺列表页
-                    // 					// 	window.location.href = "/shopadmin/shoplist";
-                    // 					// }
+					if (!isEdit) {
+						// 若为注册操作，成功后返回店铺列表页
+						window.location.href = "/shopadmin/shoplist";
+					}
 				} else {
 					$.toast('提交失败！' + data.errMsg);
 				}
