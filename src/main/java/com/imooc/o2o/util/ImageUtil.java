@@ -58,9 +58,9 @@ public class ImageUtil {
 		// 如果目标路径不存在，则自动创建
 		makeDirPath(targetAddr);
 		// 获取文件存储的相对路径(带文件名)
-		String relativeAddr = targetAddr + realFileName + extension;
+		String relativeAddr = targetAddr + realFileName + extension; //文件夹相对路径+文件名+文件后缀=文件相对路径
 		logger.debug("current relativeAddr is :" + relativeAddr);
-		// 获取文件要保存到的目标路径
+		// 获取文件要保存到的目标（绝对）路径
 		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("current complete addr is :" + PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("basePath is :" + basePath);

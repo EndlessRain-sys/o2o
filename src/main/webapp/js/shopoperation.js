@@ -23,7 +23,7 @@ $(function() {
 	}
 
 	// 通过店铺Id获取店铺信息
-	function getShopInfo(shopId) {
+	function getShopInfo(shopId) { //shopId是传到前端的request
 		$.getJSON(shopInfoUrl, function(data) {
 			if (data.success) {
 				// 若访问成功，则依据后台传递过来的店铺信息为表单元素赋值
@@ -47,8 +47,7 @@ $(function() {
 				$('#shop-category').attr('disabled', 'disabled');
 				$('#area').html(tempAreaHtml);
 				// 给店铺选定原先的所属的区域
-				$("#area option[data-id='" + shop.area.areaId + "']").attr(
-						"selected", "selected");
+				$("#area option[data-id='" + shop.area.areaId + "']").attr("selected", "selected");
 			}
 		});
 	}
@@ -104,7 +103,7 @@ $(function() {
 		// 添加图片流进表单对象里
 		formData.append('shopImg', shopImg);
 		// 将shop json对象转成字符流保存至表单对象key为shopStr的的键值对里
-		formData.append('shopStr', JSON.stringify(shop));
+		formData.append('shopStr', JSON.stringify(shop)); // JSON.stringify()把JavaScript对象转换为字符串
 		// 获取表单里输入的验证码
 		var verifyCodeActual = $('#j_captcha').val();
 		if (!verifyCodeActual) {

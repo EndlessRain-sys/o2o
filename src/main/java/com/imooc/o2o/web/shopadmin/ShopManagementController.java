@@ -128,8 +128,7 @@ public class ShopManagementController {
             return modelMap;
         }
         CommonsMultipartFile shopImg = null;
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(
-                request.getSession().getServletContext());
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         if (commonsMultipartResolver.isMultipart(request)) {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
             shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
@@ -207,12 +206,11 @@ public class ShopManagementController {
             shop = mapper.readValue(shopStr, Shop.class);
         }catch (Exception e){
             modelMap.put("success", false);
-            modelMap.put("errMs",e.getMessage());
+            modelMap.put("errMsg",e.getMessage());
             return modelMap;
         }
         CommonsMultipartFile shopImg = null;
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(
-                request.getSession().getServletContext());
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         if (commonsMultipartResolver.isMultipart(request)) {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
             shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
